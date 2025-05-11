@@ -10,7 +10,8 @@ export const FINANCIAL_DATA = {
         '^GDAXI': 19923.07,            //DAX
         '^FCHI': 7374.59,              //CAC 40
         '^SSMI': 11642.63,             //SMI
-        'FTSEMIB.MI': 34348.16,        //IBEX 35
+        'FTSEMIB.MI': 34348.16,        //Milano Borsa
+        '^IBEX': 11609.80,             //IBEX 35
         '^N225': 39945.42,             //Nikkei 225
         '^HSI': 19932.80,              //Hang Seng
         '000001.SS': 3349.9565,        //Shanghai Composite
@@ -23,6 +24,8 @@ export const FINANCIAL_DATA = {
         'EURUSD=X': 1.03549,           //EUR/USD
         'GBPUSD=X': 1.25113,           //GBP/USD
         'JPY=X': 157.312,              //USD/JPY
+        'CHFUSD=X': 1.1018,            //CHF/USD
+        'CNH=X': 7.33661,              //USD/CNH
         'BTC-USD': 93421,              //Bitcoin
         'MSFT': 425.50,                //Microsoft
         'AAPL': 248.89,                //Apple

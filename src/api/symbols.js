@@ -8,7 +8,8 @@ export const yahooSymbols = [
     '^GDAXI',       //DAX
     '^FCHI',        //CAC 40
     '^SSMI',        //SMI
-    'FTSEMIB.MI',   //IBEX 35
+    'FTSEMIB.MI',   //Milano Borsa
+    '^IBEX',        //IBEX 35
     '^N225',        //Nikkei 225
     '^HSI',         //Hang Seng
     '000001.SS',    //Shanghai Composite
@@ -21,6 +22,8 @@ export const yahooSymbols = [
     'EURUSD=X',     //EUR/USD
     'GBPUSD=X',     //GBP/USD
     'JPY=X',        //USD/JPY
+    'CHFUSD=X',     //CHF/USD
+    'CNH=X',        //CNH/USD
     'BTC-USD',      //Bitcoin
     'MSFT',         //Microsoft
     'AAPL',         //Apple

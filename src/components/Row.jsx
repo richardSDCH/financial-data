@@ -7,6 +7,12 @@ import GOOG from "../resources/icons/GOOG.png";
 import META from "../resources/icons/META.png";
 import TSLA from "../resources/icons/TSLA.png";
 import NFLX from "../resources/icons/NFLX.png";
+import USD from "../resources/flags/USD.png";
+import EUR from "../resources/flags/EUR.png";
+import GBP from "../resources/flags/GBP.png";
+import JPY from "../resources/flags/JPY.png";
+import CHF from "../resources/flags/CHF.png";
+import CNH from "../resources/flags/CNH.png";
 
 export default function Row({ id, item, numRows }) {
 
@@ -46,27 +52,27 @@ export default function Row({ id, item, numRows }) {
 
     //Content
     const getContent = (category, colNum) => {
-        if (category === "indices" || category === "currencies" || category === "commodities") {
+        if (category === "indices" || category === "commodities") {
             category = "default";
         }
 
         const formatters = {
             2: {
                 default: () => symbol + formatterValue.format(item.value),
-                futures: () => "",
                 bonds: () => formatterValue.format(item.yield),
+                currencies: () => formatterValue.format(item.value),
                 M7: () => symbol + formatterValue.format(item.value)
             },
             3: {
                 default: () => formatterChange.format(item.percentage),
-                futures: () => formatterValue.format(item.value),
                 bonds: () => formatterValue.format(item.change),
+                currencies: () => formatterChange.format(item.percentage),
                 M7: () => formatterChange.format(item.percentage)
             },
             4: {
                 default: () => formatterChange.format(item.yearToDate),
-                futures: () => formatterChange.format(item.changePer),
                 bonds: () => formatterValue.format(item.yearToDate),
+                currencies: () => formatterChange.format(item.yearToDate),
                 M7: () => formatterChange.format(item.yearToDate)
             },
         };
@@ -92,11 +98,25 @@ export default function Row({ id, item, numRows }) {
         const icon = icons[id];
         return icon;
     }
-    
 
-    const defaultCategory = category === "indices" || category === "currencies" || category === "commodities";
-    // const futures = category === "Futuros";
+    const getFlag = (id, position) => {
+        
+        let flags;
+        if (position === "base") {
+            flags = { 0: EUR, 1: USD, 2: GBP, 3: CHF, 4: USD }
+        }
+
+        if (position === "quote") {
+            flags = { 0: USD, 1: JPY, 2: USD, 3: USD, 4: CNH }
+        }
+
+        const flag = flags[id]
+        return flag;
+    }
+    
+    const defaultCategory = category === "indices" || category === "commodities";
     const bonds = category === "bonds";
+    const forex = category === "currencies";
     const magnificent7 = category === "M7";
 
     return (
@@ -133,22 +153,25 @@ export default function Row({ id, item, numRows }) {
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {/* {futures && <div className={"w-140 h-12 flex" + bgColor + bottomRounded}>
-                <div className="w-[7.5%]"></div>
-                <div className="w-[30%] flex items-center">
+           {forex && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
+                <div className="w-[3.5%]"></div>
+                <div className="w-[19%] flex items-center justify-between">
+                    <img src={getFlag(id, "base")} className="h-4"/>
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
+                    <img src={getFlag(id, "quote")} className="h-4"/>
                 </div>
-                <div className="w-[0%] flex items-center justify-end">                
+                <div className="w-[14%]"></div>
+                <div className="w-[20%] flex items-center justify-end">                
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2)}</h4>
                 </div>
-                <div className="w-[27.5%] flex items-center justify-end">
-                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 3)}</h4>
+                <div className="w-[20%] flex items-center justify-end">
+                    <Change value={getContent(category, 3)} percentage/>
                 </div>
-                <div className="w-[27.5%] flex items-center justify-end">                
-                    <Change value={getContent(category, 4)}/>
+                <div className="w-[20%] flex items-center justify-end">                
+                    <Change value={getContent(category, 4)} percentage/>
                 </div>
-                <div className="w-[7.5%]"></div>
-            </div>} */}
+                <div className="w-[3.5%]"></div>
+            </div>}
             {magnificent7 && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
                 <div className="w-[3.5%]"></div>
                 <div className="w-[6.5%] flex items-center">
