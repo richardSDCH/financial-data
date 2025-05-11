@@ -4,7 +4,7 @@ import { toPng } from "html-to-image";
 import Headings from "./Headings";
 import Row from "./Row";
 
-export default function Table({ category, title, data }) {
+export default function Table({ title, category, data }) {
 
     const tableRef = useRef();
 
@@ -14,7 +14,7 @@ export default function Table({ category, title, data }) {
         try {
         const dataUrl = await toPng(tableRef.current);
         const link = document.createElement('a');
-        link.download = `${category}_Table.png`;
+        link.download = `${title}_Table.png`;
         link.href = dataUrl;
         link.click();
         } catch (err) {
@@ -29,7 +29,7 @@ export default function Table({ category, title, data }) {
             <div ref={tableRef} className="mb-10">
                 <Headings category={category} title={title} />
                 {data.map((item, index) => (
-                    <Row key={`temp-${index}`} id={index} item={item} category={category} numRows={numRows} />
+                    <Row key={`temp-${index}`} id={index} item={item} numRows={numRows} />
                 ))}
             </div>
             <button onClick={handleDownload} className="w-40 h-12 rounded-2xl bg-cyan-500 cursor-pointer text-slate-50 font-bold mb-24 hover:bg-cyan-300 hover:text-slate-600">Download</button>

@@ -1,31 +1,34 @@
 import Change from "./Change";
-import MSFT from "../resources/icons/microsoft--big.svg";
-import AAPL from "../resources/icons/apple--big.svg";
-import NVDA from "../resources/icons/nvidia--big.svg";
-import AMZN from "../resources/icons/amazon--big.svg";
-import GOOG from "../resources/icons/alphabet--big.svg";
-import META from "../resources/icons/meta-platforms--big.svg";
-import TSLA from "../resources/icons/tesla--big.svg";
-import NFLX from "../resources/icons/netflix--big.svg";
+import MSFT from "../resources/icons/MSFT.png";
+import AAPL from "../resources/icons/AAPL.png";
+import NVDA from "../resources/icons/NVDA.png";
+import AMZN from "../resources/icons/AMZN.png";
+import GOOG from "../resources/icons/GOOG.png";
+import META from "../resources/icons/META.png";
+import TSLA from "../resources/icons/TSLA.png";
+import NFLX from "../resources/icons/NFLX.png";
 
-export default function Row({ id, item, category, numRows }) {
+export default function Row({ id, item, numRows }) {
+
+    const category = item.category;
 
     //Formatting logic
     let minimumFractionDigits = 1, maximumFractionDigits = 2
 
-    if (category === "Monedas y crypto") {
+    if (category === "currencies") {
         minimumFractionDigits = 1;
         maximumFractionDigits = 4;
-    } else if (category === "Commodities") {
+    } else if (category === "commodities") {
         minimumFractionDigits = 2;
-    } else if (category === "Futuros" || category === "Bonos") {
+    } else if (category === "futures" || category === "bonds") {
         maximumFractionDigits = 3;
     }
 
-    const symbol = category === "Commodities" ? "$" : "";
+    const symbol = category === "commodities" ? "$" : "";
 
     const even = id % 2 === 0;
     const bgColor = even ? " bg-slate-100 " : " bg-slate-200 ";
+    const bgIcon = even ? " bg-slate-200 " : " bg-slate-100";
     const lastRow = id === numRows - 1;
     const bottomRounded = lastRow ? "rounded-b-xl" : "";
 
@@ -43,34 +46,29 @@ export default function Row({ id, item, category, numRows }) {
 
     //Content
     const getContent = (category, colNum) => {
-
-        const marketCapLetter = item.marketCap < 10 ? "T" : "B";
+        if (category === "indices" || category === "currencies" || category === "commodities") {
+            category = "default";
+        }
 
         const formatters = {
             2: {
-                Default: () => symbol + formatterValue.format(item.value),
-                Futuros: () => "",
-                Bonos: () => "",
+                default: () => symbol + formatterValue.format(item.value),
+                futures: () => "",
+                bonds: () => formatterValue.format(item.yield),
                 M7: () => symbol + formatterValue.format(item.value)
             },
             3: {
-                Default: () => formatterChange.format(item.percentage),
-                Futuros: () => formatterValue.format(item.value),
-                Bonos: () => formatterValue.format(item.yield),
+                default: () => formatterChange.format(item.percentage),
+                futures: () => formatterValue.format(item.value),
+                bonds: () => formatterValue.format(item.change),
                 M7: () => formatterChange.format(item.percentage)
             },
             4: {
-                Default: () => formatterChange.format(item.yearToDate),
-                Futuros: () => formatterChange.format(item.changePer),
-                Bonos: () => formatterValue.format(item.change),
+                default: () => formatterChange.format(item.yearToDate),
+                futures: () => formatterChange.format(item.changePer),
+                bonds: () => formatterValue.format(item.yearToDate),
                 M7: () => formatterChange.format(item.yearToDate)
             },
-            5: {
-                Default: () => "",
-                Futuros: () => "",
-                Bonos: () => "",
-                M7: () => formatterChange.format(item.marketCap) + marketCapLetter
-            }
         };
     
         const column = formatters[colNum];
@@ -96,9 +94,9 @@ export default function Row({ id, item, category, numRows }) {
     }
     
 
-    const defaultCategory = category !== "Futuros" && category !== "Bonos" && category !== "M7";
-    const futures = category === "Futuros";
-    const bonds = category === "Bonos";
+    const defaultCategory = category === "indices" || category === "currencies" || category === "commodities";
+    // const futures = category === "Futuros";
+    const bonds = category === "bonds";
     const magnificent7 = category === "M7";
 
     return (
@@ -112,7 +110,7 @@ export default function Row({ id, item, category, numRows }) {
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2)}</h4>
                 </div>
                 <div className="w-[19%] flex items-center justify-end">
-                    <Change value={getContent(category, 3)} percentage={defaultCategory} />
+                    <Change value={getContent(category, 3)} percentage/>
                 </div>
                 <div className="w-[20%] flex items-center justify-end">                
                     <Change value={getContent(category, 4)} percentage/>
@@ -125,17 +123,17 @@ export default function Row({ id, item, category, numRows }) {
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
                 </div>
                 <div className="w-[19%] flex items-center justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2)}</h4>
+                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2) + "%"}</h4>
                 </div>
                 <div className="w-[19%] flex items-center justify-end">
-                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 3) + "%"}</h4>
+                    <Change value={getContent(category, 3)}/>
                 </div>
                 <div className="w-[20%] flex items-center justify-end">                
                     <Change value={getContent(category, 4)}/>
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {futures && <div className={"w-140 h-12 flex" + bgColor + bottomRounded}>
+            {/* {futures && <div className={"w-140 h-12 flex" + bgColor + bottomRounded}>
                 <div className="w-[7.5%]"></div>
                 <div className="w-[30%] flex items-center">
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
@@ -150,26 +148,26 @@ export default function Row({ id, item, category, numRows }) {
                     <Change value={getContent(category, 4)}/>
                 </div>
                 <div className="w-[7.5%]"></div>
-            </div>}
+            </div>} */}
             {magnificent7 && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
                 <div className="w-[3.5%]"></div>
                 <div className="w-[6.5%] flex items-center">
-                    <img src={getIcon(id)} className="rounded-full h-8"/>
+                    <div className={"h-10 w-10 rounded-full flex justify-center items-center" + bgIcon}><img src={getIcon(id)} className="h-5"/></div>
                 </div>
-                <div className="w-[20.5%] flex items-center">
+                <div className="w-[15%] flex items-center">
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
                 </div>
-                <div className="w-[16.5%] flex items-center justify-end">                
+                <div className="w-[11.5%] flex items-center justify-start">                
+                    <h4 className="font-semibold text-lg text-slate-800">{item.symbol}</h4>
+                </div>
+                <div className="w-[20%] flex items-center justify-end">                
                     <h4 className="font-semibold text-lg text-slate-800">{"$" + getContent(category, 2)}</h4>
                 </div>
-                <div className="w-[16.5%] flex items-center justify-end">                
+                <div className="w-[20%] flex items-center justify-end">                
                     <Change value={getContent(category, 3)} percentage/>
                 </div>
-                <div className="w-[16.5%] flex items-center justify-end">
+                <div className="w-[20%] flex items-center justify-end">
                     <Change value={getContent(category, 4)} percentage/>
-                </div>
-                <div className="w-[16.5%] flex items-center justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-800">{"$" + getContent(category, 5)}</h4>
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
