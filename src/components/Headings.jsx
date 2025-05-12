@@ -30,22 +30,25 @@ export default function Headings({ category, title }) {
         const formatters = {
             2: {
                 default: () => "Valor",
-                futures: () => "",
                 bonds: () => "Retorno",
-                M7: () => "Pre-apertura"
+                M7: () => "Valor",
+                etfs: () => "Exposición"
             },
             3: {
                 default: () => "1 día",
-                futures: () => "Valor",
                 bonds: () => "1 día",
-                M7: () => ""
+                M7: () => "1 día",
+                etfs: () => "Valor"
             },
             4: {
                 default: () => "YTD",
-                futures: () => "1 día",
                 bonds: () => "YTD",
-                M7: () => "YTD"
+                M7: () => "YTD",
+                etfs: () => "1 día"
             },
+            5: {
+                etfs: () => "YTD"
+            }
         };
     
         const column = formatters[colNum];
@@ -56,9 +59,9 @@ export default function Headings({ category, title }) {
     };
 
     const defaultCategory = category === "indices" || category === "currencies" || category === "commodities";
-    // const futures = category === "Futuros";
     const bonds = category === "bonds";
     const magnificent7 = category === "M7";
+    const etfs = category === "etfs";
 
     return (
         <>
@@ -68,7 +71,7 @@ export default function Headings({ category, title }) {
                     <h4 className="font-semibold text-lg text-slate-50">{title}</h4>
                 </div>
                 <div className="w-[20%] flex items-center font-semibold justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 2)}</h4>
+                    <h4 className="font-semibold text-lg text-slate-50 mr-4">{getHeading(category, 2)}</h4>
                 </div>
                 <div className="w-[20%] flex items-center font-semibold justify-end">                
                     <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 3)}</h4>
@@ -94,35 +97,38 @@ export default function Headings({ category, title }) {
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {/* {futures && <div className="w-140 h-10 flex bg-blue-800 rounded-t-xl">
-                <div className="w-[7.5%]"></div>
-                <div className="w-[30%] flex items-center font-semibold">
-                    <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 1)}</h4>
-                </div>
-                <div className="w-[0%] flex items-center font-semibold justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 2)}</h4>
-                </div>
-                <div className="w-[27.5%] flex items-center font-semibold justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-50 mr-2">{getHeading(category, 3)}</h4>
-                </div>
-                <div className="w-[27.5%] flex items-center justify-end">
-                    <h4 className="font-semibold text-lg text-slate-50 mr-3.5">{getHeading(category, 4)}</h4>
-                </div>
-                <div className="w-[7.5%]"></div>
-            </div>} */}
             {magnificent7 && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
                 <div className="w-[3.5%]"></div>
                 <div className="w-[33%] flex items-center font-semibold">
                     <h4 className="font-semibold text-lg text-slate-50 ml-1.5">{title}</h4>
                 </div>
                 <div className="w-[25%] flex items-center font-semibold justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-50 mr-4.5">{getHeading(category, 2)}</h4>
+                    <h4 className="font-semibold text-lg text-slate-50 mr-12">{getHeading(category, 2)}</h4>
                 </div>
                 <div className="w-[15%] flex items-center font-semibold justify-end">                
-                    <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 3)}</h4>
+                    <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 3)}</h4>
                 </div>
                 <div className="w-[20%] flex items-center justify-end">
                     <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 4)}</h4>
+                </div>
+                <div className="w-[3.5%]"></div>
+            </div>}
+            {etfs && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
+                <div className="w-[3.5%]"></div>
+                <div className="w-[18%] flex items-center font-semibold">
+                    <h4 className="font-semibold text-lg text-slate-50">{title}</h4>
+                </div>
+                <div className="w-[21%] flex items-center font-semibold">
+                    <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 2)}</h4>
+                </div>
+                <div className="w-[18%] flex items-center font-semibold justify-end">                
+                    <h4 className="font-semibold text-lg text-slate-50 mr-2">{getHeading(category, 3)}</h4>
+                </div>
+                <div className="w-[18%] flex items-center font-semibold justify-end">                
+                    <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 4)}</h4>
+                </div>
+                <div className="w-[18%] flex items-center justify-end">
+                    <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 5)}</h4>
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}

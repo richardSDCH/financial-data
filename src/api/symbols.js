@@ -32,7 +32,16 @@ export const yahooSymbols = [
     'GOOG',         //Alphabet
     'META',         //Meta
     'TSLA',         //Tesla
-    'NFLX'          //Netflix
+    'NFLX',         //Netflix
+    'VOO',          //S&P 500
+    'QQQ',          //Nasdaq 100
+    'IWM',          //Russell 2000
+    'VTI',          //Total US Stock
+    'VWCE.DE',         //Total World
+    'EXUS.L',       //Total World ex-Usa
+    'IBIT',         //Bitcoin
+    'BND',          //Total Bond Market
+    'GLD'           //Gold Bullion
 ];
 
 

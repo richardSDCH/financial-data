@@ -39,7 +39,7 @@ const openingTable = [
   { category: "indices", name: "US Dollar Index", value: yahooApiData['DX-Y.NYB'].closingPrice, percentage: getPercentage(yahooApiData['DX-Y.NYB'].closingPrice, yahooApiData['DX-Y.NYB'].previousClose), yearToDate: getYTD(yahooApiData['DX-Y.NYB'].closingPrice, FINANCIAL_DATA.yearOpen['DX-Y.NYB'])},
   { category: "bonds", name: "US Treasury Note - 10Y", yield: parseFloat(fredApiData.DGS10.closingYield), change: parseFloat(fredApiData.DGS10.closingYield) - parseFloat(fredApiData.DGS10.previousYield), yearToDate: parseFloat(fredApiData.DGS10.closingYield) - FINANCIAL_DATA.T10Y.yearOpen},
   { category: "commodities", name: "Oro", value: FINANCIAL_DATA.XAUUSD.currentValue, percentage: getPercentage(FINANCIAL_DATA.XAUUSD.currentValue, FINANCIAL_DATA.XAUUSD.prevClose), yearToDate: getYTD(FINANCIAL_DATA.XAUUSD.currentValue, FINANCIAL_DATA.XAUUSD.yearOpen)},
-  { category: "commodities", name: "Petróleo - WTI", value: FINANCIAL_DATA.WTI.currentValue, percentage: getPercentage(FINANCIAL_DATA.WTI.currentValue, FINANCIAL_DATA.WTI.prevClose), yearToDate: getYTD(FINANCIAL_DATA.WTI.currentValue, FINANCIAL_DATA.WTI.yearOpen)},
+  { category: "commodities", name: "Petróleo - West Texas", value: FINANCIAL_DATA.WTI.currentValue, percentage: getPercentage(FINANCIAL_DATA.WTI.currentValue, FINANCIAL_DATA.WTI.prevClose), yearToDate: getYTD(FINANCIAL_DATA.WTI.currentValue, FINANCIAL_DATA.WTI.yearOpen)},
   { category: "commodities", name: "Bitcoin", value: yahooApiData['BTC-USD'].closingPrice, percentage: getPercentage(yahooApiData['BTC-USD'].closingPrice, yahooApiData['BTC-USD'].previousClose), yearToDate: getYTD(yahooApiData['BTC-USD'].closingPrice, FINANCIAL_DATA.yearOpen['BTC-USD'])}
 ]
 
@@ -77,17 +77,28 @@ const forex = [
   { category: "currencies", name: "USD/CNH", value: yahooApiData['CNH=X'].closingPrice, percentage: getPercentage(yahooApiData['CNH=X'].closingPrice, yahooApiData['CNH=X'].previousClose), yearToDate: getYTD(yahooApiData['CNH=X'].closingPrice, FINANCIAL_DATA.yearOpen['CNH=X'])}
 ]
 
-// const magnificent7 = [
-//   { category: "M7", name: "Microsoft", symbol: "MSFT", value: FINANCIAL_DATA.MSFT.currentValue, percentage: getPercentage(FINANCIAL_DATA.MSFT), yearToDate: getYTD(FINANCIAL_DATA.MSFT)},
-//   { category: "M7", name: "Apple", symbol: "AAPL", value: FINANCIAL_DATA.AAPL.currentValue, percentage: getPercentage(FINANCIAL_DATA.AAPL), yearToDate: getYTD(FINANCIAL_DATA.AAPL)},
-//   { category: "M7", name: "Nvdia", symbol: "NVDA", value: FINANCIAL_DATA.NVDA.currentValue, percentage: getPercentage(FINANCIAL_DATA.NVDA), yearToDate: getYTD(FINANCIAL_DATA.NVDA)},
-//   { category: "M7", name: "Amazon", symbol: "AMZN", value: FINANCIAL_DATA.AMZN.currentValue, percentage: getPercentage(FINANCIAL_DATA.AMZN), yearToDate: getYTD(FINANCIAL_DATA.AMZN)},
-//   { category: "M7", name: "Alphabet", symbol: "GOOG", value: FINANCIAL_DATA.GOOG.currentValue, percentage: getPercentage(FINANCIAL_DATA.GOOG), yearToDate: getYTD(FINANCIAL_DATA.GOOG)},
-//   { category: "M7", name: "Meta", symbol: "META", value: FINANCIAL_DATA.META.currentValue, percentage: getPercentage(FINANCIAL_DATA.META), yearToDate: getYTD(FINANCIAL_DATA.META)},
-//   { category: "M7", name: "Tesla", symbol: "TSLA", value: FINANCIAL_DATA.TSLA.currentValue, percentage: getPercentage(FINANCIAL_DATA.TSLA), yearToDate: getYTD(FINANCIAL_DATA.TSLA)},
-//   { category: "M7", name: "Netflix", symbol: "NFLX", value: FINANCIAL_DATA.NFLX.currentValue, percentage: getPercentage(FINANCIAL_DATA.NFLX), yearToDate: getYTD(FINANCIAL_DATA.NFLX)}
-// ]
+const magnificent7 = [
+  { category: "M7", name: "Microsoft", symbol: "MSFT", value: yahooApiData['MSFT'].closingPrice, percentage: getPercentage(yahooApiData['MSFT'].closingPrice, yahooApiData['MSFT'].previousClose), yearToDate: getYTD(yahooApiData['MSFT'].closingPrice, FINANCIAL_DATA.yearOpen['MSFT'])},
+  { category: "M7", name: "Apple", symbol: "AAPL", value: yahooApiData['AAPL'].closingPrice, percentage: getPercentage(yahooApiData['AAPL'].closingPrice, yahooApiData['AAPL'].previousClose), yearToDate: getYTD(yahooApiData['AAPL'].closingPrice, FINANCIAL_DATA.yearOpen['AAPL'])},
+  { category: "M7", name: "Nvdia", symbol: "NVDA", value: yahooApiData['NVDA'].closingPrice, percentage: getPercentage(yahooApiData['NVDA'].closingPrice, yahooApiData['NVDA'].previousClose), yearToDate: getYTD(yahooApiData['NVDA'].closingPrice, FINANCIAL_DATA.yearOpen['NVDA'])},
+  { category: "M7", name: "Amazon", symbol: "AMZN", value: yahooApiData['AMZN'].closingPrice, percentage: getPercentage(yahooApiData['AMZN'].closingPrice, yahooApiData['AMZN'].previousClose), yearToDate: getYTD(yahooApiData['AMZN'].closingPrice, FINANCIAL_DATA.yearOpen['AMZN'])},
+  { category: "M7", name: "Alphabet", symbol: "GOOG", value: yahooApiData['GOOG'].closingPrice, percentage: getPercentage(yahooApiData['GOOG'].closingPrice, yahooApiData['GOOG'].previousClose), yearToDate: getYTD(yahooApiData['GOOG'].closingPrice, FINANCIAL_DATA.yearOpen['GOOG'])},
+  { category: "M7", name: "Meta", symbol: "META", value: yahooApiData['META'].closingPrice, percentage: getPercentage(yahooApiData['META'].closingPrice, yahooApiData['META'].previousClose), yearToDate: getYTD(yahooApiData['META'].closingPrice, FINANCIAL_DATA.yearOpen['META'])},
+  { category: "M7", name: "Tesla", symbol: "TSLA", value: yahooApiData['TSLA'].closingPrice, percentage: getPercentage(yahooApiData['TSLA'].closingPrice, yahooApiData['TSLA'].previousClose), yearToDate: getYTD(yahooApiData['TSLA'].closingPrice, FINANCIAL_DATA.yearOpen['TSLA'])},
+  { category: "M7", name: "Netflix", symbol: "NFLX", value: yahooApiData['NFLX'].closingPrice, percentage: getPercentage(yahooApiData['NFLX'].closingPrice, yahooApiData['NFLX'].previousClose), yearToDate: getYTD(yahooApiData['NFLX'].closingPrice, FINANCIAL_DATA.yearOpen['NFLX'])}
+]
 
+const etfs = [
+  { category: "etfs", name: "VOO", exposure: "S&P 500", value: yahooApiData['VOO'].closingPrice, percentage: getPercentage(yahooApiData['VOO'].closingPrice, yahooApiData['VOO'].previousClose), yearToDate: getYTD(yahooApiData['VOO'].closingPrice, FINANCIAL_DATA.yearOpen['VOO'])},
+  { category: "etfs", name: "QQQ", exposure: "Nasdaq 100", value: yahooApiData['QQQ'].closingPrice, percentage: getPercentage(yahooApiData['QQQ'].closingPrice, yahooApiData['QQQ'].previousClose), yearToDate: getYTD(yahooApiData['QQQ'].closingPrice, FINANCIAL_DATA.yearOpen['QQQ'])},
+  { category: "etfs", name: "IWM", exposure: "Russell 2000", value: yahooApiData['IWM'].closingPrice, percentage: getPercentage(yahooApiData['IWM'].closingPrice, yahooApiData['IWM'].previousClose), yearToDate: getYTD(yahooApiData['IWM'].closingPrice, FINANCIAL_DATA.yearOpen['IWM'])},
+  { category: "etfs", name: "VTI", exposure: "Total US", value: yahooApiData['VTI'].closingPrice, percentage: getPercentage(yahooApiData['VTI'].closingPrice, yahooApiData['VTI'].previousClose), yearToDate: getYTD(yahooApiData['VTI'].closingPrice, FINANCIAL_DATA.yearOpen['VTI'])},
+  { category: "etfs", name: "VWCE.DE", exposure: "Mundo entero", value: yahooApiData['VWCE.DE'].closingPrice, percentage: getPercentage(yahooApiData['VWCE.DE'].closingPrice, yahooApiData['VWCE.DE'].previousClose), yearToDate: getYTD(yahooApiData['VWCE.DE'].closingPrice, FINANCIAL_DATA.yearOpen['VWCE.DE'])},
+  { category: "etfs", name: "EXUS.L", exposure: "Mundo entero ex-USA", value: yahooApiData['EXUS.L'].closingPrice, percentage: getPercentage(yahooApiData['EXUS.L'].closingPrice, yahooApiData['EXUS.L'].previousClose), yearToDate: getYTD(yahooApiData['EXUS.L'].closingPrice, FINANCIAL_DATA.yearOpen['EXUS.L'])},
+  { category: "etfs", name: "IBIT", exposure: "Bitcoin", value: yahooApiData['IBIT'].closingPrice, percentage: getPercentage(yahooApiData['IBIT'].closingPrice, yahooApiData['IBIT'].previousClose), yearToDate: getYTD(yahooApiData['IBIT'].closingPrice, FINANCIAL_DATA.yearOpen['IBIT'])},
+  { category: "etfs", name: "BND", exposure: "Total US bonos", value: yahooApiData['BND'].closingPrice, percentage: getPercentage(yahooApiData['BND'].closingPrice, yahooApiData['BND'].previousClose), yearToDate: getYTD(yahooApiData['BND'].closingPrice, FINANCIAL_DATA.yearOpen['BND'])},
+  { category: "etfs", name: "GLD", exposure: "Oro", value: yahooApiData['GLD'].closingPrice, percentage: getPercentage(yahooApiData['GLD'].closingPrice, yahooApiData['GLD'].previousClose), yearToDate: getYTD(yahooApiData['GLD'].closingPrice, FINANCIAL_DATA.yearOpen['GLD'])}
+]
 
 export default function App() {
 
@@ -99,7 +110,8 @@ export default function App() {
         <Table category="indices" title="Indices Asia" data={indicesAsia}/>
         <Table category="bonds" title="Bonos" data={bonds} />
         <Table category="currencies" title="Forex" data={forex} />
-        {/* <Table category="M7" title="Las Magníficas 7+ " data={magnificent7} /> */}
+        <Table category="M7" title="Las Magníficas 7+ " data={magnificent7} />
+        <Table category="etfs" title="ETFs" data={etfs} />
       </div>
     </>
   )

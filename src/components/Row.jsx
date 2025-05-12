@@ -61,20 +61,26 @@ export default function Row({ id, item, numRows }) {
                 default: () => symbol + formatterValue.format(item.value),
                 bonds: () => formatterValue.format(item.yield),
                 currencies: () => formatterValue.format(item.value),
-                M7: () => symbol + formatterValue.format(item.value)
+                M7: () => symbol + formatterValue.format(item.value),
+                etfs: () => item.exposure
             },
             3: {
                 default: () => formatterChange.format(item.percentage),
                 bonds: () => formatterValue.format(item.change),
                 currencies: () => formatterChange.format(item.percentage),
-                M7: () => formatterChange.format(item.percentage)
+                M7: () => formatterChange.format(item.percentage),
+                etfs: () => formatterValue.format(item.value)
             },
             4: {
                 default: () => formatterChange.format(item.yearToDate),
                 bonds: () => formatterValue.format(item.yearToDate),
                 currencies: () => formatterChange.format(item.yearToDate),
-                M7: () => formatterChange.format(item.yearToDate)
+                M7: () => formatterChange.format(item.yearToDate),
+                etfs: () => formatterChange.format(item.percentage)
             },
+            5: {
+                etfs: () => formatterChange.format(item.yearToDate)
+            }
         };
     
         const column = formatters[colNum];
@@ -118,18 +124,19 @@ export default function Row({ id, item, numRows }) {
     const bonds = category === "bonds";
     const forex = category === "currencies";
     const magnificent7 = category === "M7";
+    const etfs = category === "etfs";
 
     return (
         <>
             {defaultCategory && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
                 <div className="w-[3.5%]"></div>
-                <div className="w-[35%] flex items-center">
+                <div className="w-[33%] flex items-center">
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
                 </div>
-                <div className="w-[19%] flex items-center justify-end">                
+                <div className="w-[20%] flex items-center justify-end">                
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2)}</h4>
                 </div>
-                <div className="w-[19%] flex items-center justify-end">
+                <div className="w-[20%] flex items-center justify-end">
                     <Change value={getContent(category, 3)} percentage/>
                 </div>
                 <div className="w-[20%] flex items-center justify-end">                
@@ -175,7 +182,7 @@ export default function Row({ id, item, numRows }) {
             {magnificent7 && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
                 <div className="w-[3.5%]"></div>
                 <div className="w-[6.5%] flex items-center">
-                    <div className={"h-10 w-10 rounded-full flex justify-center items-center" + bgIcon}><img src={getIcon(id)} className="h-5"/></div>
+                    <div className={"h-9 w-9 rounded-full flex justify-center items-center" + bgIcon}><img src={getIcon(id)} className="h-5"/></div>
                 </div>
                 <div className="w-[15%] flex items-center">
                     <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
@@ -191,6 +198,25 @@ export default function Row({ id, item, numRows }) {
                 </div>
                 <div className="w-[20%] flex items-center justify-end">
                     <Change value={getContent(category, 4)} percentage/>
+                </div>
+                <div className="w-[3.5%]"></div>
+            </div>}
+            {etfs && <div className={"w-200 h-12 flex" + bgColor + bottomRounded}>
+                <div className="w-[3.5%]"></div>
+                <div className="w-[18%] flex items-center">
+                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 1)}</h4>
+                </div>
+                <div className="w-[24%] flex items-center">
+                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 2)}</h4>
+                </div>
+                <div className="w-[15%] flex items-center justify-end">                
+                    <h4 className="font-semibold text-lg text-slate-800">{getContent(category, 3)}</h4>
+                </div>
+                <div className="w-[18%] flex items-center justify-end">                
+                    <Change value={getContent(category, 4)} percentage/>
+                </div>
+                <div className="w-[18%] flex items-center justify-end">
+                    <Change value={getContent(category, 5)} percentage/>
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}

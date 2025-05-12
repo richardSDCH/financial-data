@@ -34,7 +34,16 @@ export const FINANCIAL_DATA = {
         'GOOG': 191.57,                //Alphabet
         'META': 589.31,                //Meta
         'TSLA': 390.10,                //Tesla
-        'NFLX': 895.80                 //Netflix
+        'NFLX': 895.80,                //Netflix
+        'VOO': 542.02,                 //S&P 500
+        'QQQ': 514.30,                 //Nasdaq 100
+        'IWM': 222.93,                 //Russell 2000
+        'VTI': 291.45,                 //Total US Stock
+        'VWCE.DE': 134.28,             //Total World
+        'EXUS.L': 31.36,               //Total World ex-Usa
+        'IBIT': 54.90,                 //Bitcoin
+        'BND': 72.19,                  //Total Bond Market
+        'GLD': 244.22                  //Gold Bullion
     },
 
     //SPX
@@ -268,17 +277,17 @@ export const FINANCIAL_DATA = {
     XAUUSD:     
         { 
             yearOpen: 2623.81,
-            date: "09/05/2025",
-            prevClose: 3305.98,
-            currentValue: 3325.39
+            date: "12/05/2025",
+            prevClose: 3325.39,
+            currentValue: 3215.46
         },
     //WTICOUSD
     WTI:                                                                  
         { 
             yearOpen: 72.050,
-            date: "09/05/2025",
-            prevClose: 60.443,
-            currentValue: 61.225
+            date: "12/05/2025",
+            prevClose: 61.225,
+            currentValue: 63.009
         },
     //BRENT
     BRENT:      
