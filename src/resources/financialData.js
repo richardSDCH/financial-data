@@ -27,6 +27,8 @@ export const FINANCIAL_DATA = {
         'CHFUSD=X': 1.1018,            //CHF/USD
         'CNH=X': 7.33661,              //USD/CNH
         'BTC-USD': 93421,              //Bitcoin
+        'XAUUSD': 2623.81,             //Gold spot
+        'WTICOUSD': 72.050,            //West Texas crude oil
         'MSFT': 425.50,                //Microsoft
         'AAPL': 248.89,                //Apple
         'NVDA': 136.01,                //Nvidia
@@ -43,7 +45,11 @@ export const FINANCIAL_DATA = {
         'VEU': 57.44,                  //Total World ex-Usa
         'IBIT': 54.90,                 //Bitcoin
         'BND': 72.19,                  //Total Bond Market
-        'GLD': 244.22                  //Gold Bullion
+        'GLD': 244.22,                 //Gold Bullion
+        'DGS3MO': 4.500,               //US T-Bill 3-months
+        'DGS2': 4.500,                 //US T-Note 2-years
+        'DGS10': 4.500,                //US T-Note 10-years
+        'DGS30': 4.500                 //US T-Bond 30-years
     },
 
     //Bonds - https://www.cnbc.com/bonds/
@@ -77,16 +83,16 @@ export const FINANCIAL_DATA = {
     XAUUSD:     
         { 
             yearOpen: 2623.81,
-            date: "13/05/2025",
-            prevClose: 3235.08,
-            currentValue: 3252.04
+            date: "14/05/2025",
+            prevClose: 3250.18,
+            currentValue: 3232.49
         },
     //WTICOUSD
     WTI:                                                                  
         { 
             yearOpen: 72.050,
-            date: "13/05/2025",
-            prevClose: 62.105,
-            currentValue: 62.612
+            date: "14/05/2025",
+            prevClose: 63.742,
+            currentValue: 63.052
         }
 }
