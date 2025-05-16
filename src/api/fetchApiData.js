@@ -21,7 +21,7 @@
 // }
 
 // fetchApiData.js
-export async function getLocalDailyData() {
+export async function fetchLocalDailyData() {
   const res = await fetch("/dailyData.json");
   if (!res.ok) throw new Error("Failed to load daily data");
   return await res.json();

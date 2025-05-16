@@ -38,6 +38,7 @@ export default function Row({ id, item, numRows }) {
     const lastRow = id === numRows - 1;
     const bottomRounded = lastRow ? "rounded-b-xl" : "";
 
+    //Lightweight formatters
     const formatterValue = new Intl.NumberFormat('en-US', {
         minimumFractionDigits,
         maximumFractionDigits,
@@ -49,6 +50,8 @@ export default function Row({ id, item, numRows }) {
         maximumFractionDigits: 2,
         // useGrouping: true is the default, which adds the thousands separator (,)
     });
+
+
 
     //Content
     const getContent = (category, colNum) => {
@@ -66,7 +69,7 @@ export default function Row({ id, item, numRows }) {
             },
             3: {
                 default: () => formatterChange.format(item.percentage),
-                bonds: () => formatterValue.format(item.change),
+                bonds: () => formatterChange.format(item.change),
                 currencies: () => formatterChange.format(item.percentage),
                 M7: () => formatterChange.format(item.percentage),
                 etfs: () => formatterValue.format(item.value)

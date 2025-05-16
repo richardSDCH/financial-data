@@ -72,6 +72,7 @@ export const getDailyTableIndicators = (dailyData) => {
     //Build Bonds
     const bonds = [
         { category: "bonds", name: "US Treasury Bill - 3M", yield: dailyIndicators['DGS3MO'].close, change: dailyIndicators['DGS3MO'].dailyVariation, yearToDate: dailyIndicators['DGS3MO'].close - FINANCIAL_DATA.yearOpen['DGS3MO']},
+        { category: "bonds", name: "US Treasury Bill - 1Y", yield: dailyIndicators['DGS1'].close, change: dailyIndicators['DGS1'].dailyVariation, yearToDate: dailyIndicators['DGS1'].close - FINANCIAL_DATA.yearOpen['DGS1']},
         { category: "bonds", name: "US Treasury Note - 2Y", yield: dailyIndicators['DGS2'].close, change: dailyIndicators['DGS2'].dailyVariation, yearToDate: dailyIndicators['DGS2'].close - FINANCIAL_DATA.yearOpen['DGS2']},
         { category: "bonds", name: "US Treasury Note - 10Y", yield: dailyIndicators['DGS10'].close, change: dailyIndicators['DGS10'].dailyVariation, yearToDate: dailyIndicators['DGS10'].close - FINANCIAL_DATA.yearOpen['DGS10']},
         { category: "bonds", name: "US Treasury Bond - 30Y", yield: dailyIndicators['DGS30'].close, change: dailyIndicators['DGS30'].dailyVariation, yearToDate: dailyIndicators['DGS30'].close - FINANCIAL_DATA.yearOpen['DGS30']},

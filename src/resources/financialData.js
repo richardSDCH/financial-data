@@ -46,10 +46,11 @@ export const FINANCIAL_DATA = {
         'IBIT': 54.90,                 //Bitcoin
         'BND': 72.19,                  //Total Bond Market
         'GLD': 244.22,                 //Gold Bullion
-        'DGS3MO': 4.500,               //US T-Bill 3-months
-        'DGS2': 4.500,                 //US T-Note 2-years
-        'DGS10': 4.500,                //US T-Note 10-years
-        'DGS30': 4.500                 //US T-Bond 30-years
+        'DGS3MO': 4.333,               //US T-Bill 3-months
+        'DGS1': 4.159,               //US T-Bill 1-year
+        'DGS2': 4.240,                 //US T-Note 2-years
+        'DGS10': 4.573,                //US T-Note 10-years
+        'DGS30': 4.786                //US T-Bond 30-years
     },
 
     //Bonds - https://www.cnbc.com/bonds/
