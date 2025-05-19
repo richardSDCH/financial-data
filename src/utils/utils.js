@@ -18,14 +18,17 @@ export const getDailyTableIndicators = (dailyData) => {
                 dailyVariation = latest.value - previous.value;
             } else {
                 dailyVariation = ((latest.value - previous.value) / previous.value) * 100;
+                dailyVariation = parseFloat(dailyVariation.toFixed(2))
             }
 
             dailyIndicators[symbol] = {
             close,
-            dailyVariation: parseFloat(dailyVariation.toFixed(2)) // optional formatting
+            dailyVariation
             };
         }
     }
+
+    // console.log('dailyIndicators:', dailyIndicators);
 
     const getYTD = (close, yearOpen) => {
         const yearToDate = ((close - yearOpen) / yearOpen) * 100;

@@ -27,6 +27,7 @@ export default function Row({ id, item, numRows }) {
     } else if (category === "commodities") {
         minimumFractionDigits = 2;
     } else if (category === "futures" || category === "bonds") {
+        minimumFractionDigits = 3;
         maximumFractionDigits = 3;
     }
 
@@ -69,7 +70,7 @@ export default function Row({ id, item, numRows }) {
             },
             3: {
                 default: () => formatterChange.format(item.percentage),
-                bonds: () => formatterChange.format(item.change),
+                bonds: () => formatterValue.format(item.change),
                 currencies: () => formatterChange.format(item.percentage),
                 M7: () => formatterChange.format(item.percentage),
                 etfs: () => formatterValue.format(item.value)
