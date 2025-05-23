@@ -47,10 +47,13 @@ export const FINANCIAL_DATA = {
         'BND': 72.19,                  //Total Bond Market
         'GLD': 244.22,                 //Gold Bullion
         'DGS3MO': 4.333,               //US T-Bill 3-months
-        'DGS1': 4.159,               //US T-Bill 1-year
+        'DGS1': 4.159,                 //US T-Bill 1-year
         'DGS2': 4.240,                 //US T-Note 2-years
         'DGS10': 4.573,                //US T-Note 10-years
-        'DGS30': 4.786                //US T-Bond 30-years
+        'DGS30': 4.786,                //US T-Bond 30-years
+        'GILT10': 4.573,               //UK Gilt 10-years
+        'BUND10': 2.364,               //German Bund 10-years
+        'JGB10': 1.078                 //Japan Government Bond 10-years
     },
 
     //Bonds - https://www.cnbc.com/bonds/

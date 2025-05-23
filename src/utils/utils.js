@@ -14,7 +14,7 @@ export const getDailyTableIndicators = (dailyData) => {
             const close = latest.value;
             let dailyVariation;
 
-            if (symbol.startsWith("DGS")) {
+            if (symbol.startsWith("DGS") || symbol.startsWith("GILT") || symbol.startsWith("BUND") || symbol.startsWith("JGB")) {
                 dailyVariation = latest.value - previous.value;
             } else {
                 dailyVariation = ((latest.value - previous.value) / previous.value) * 100;
@@ -79,6 +79,9 @@ export const getDailyTableIndicators = (dailyData) => {
         { category: "bonds", name: "US Treasury Note - 2Y", yield: dailyIndicators['DGS2'].close, change: dailyIndicators['DGS2'].dailyVariation, yearToDate: dailyIndicators['DGS2'].close - FINANCIAL_DATA.yearOpen['DGS2']},
         { category: "bonds", name: "US Treasury Note - 10Y", yield: dailyIndicators['DGS10'].close, change: dailyIndicators['DGS10'].dailyVariation, yearToDate: dailyIndicators['DGS10'].close - FINANCIAL_DATA.yearOpen['DGS10']},
         { category: "bonds", name: "US Treasury Bond - 30Y", yield: dailyIndicators['DGS30'].close, change: dailyIndicators['DGS30'].dailyVariation, yearToDate: dailyIndicators['DGS30'].close - FINANCIAL_DATA.yearOpen['DGS30']},
+        { category: "bonds", name: "UK Gilt - 10Y", yield: dailyIndicators['GILT10'].close, change: dailyIndicators['GILT10'].dailyVariation, yearToDate: dailyIndicators['GILT10'].close - FINANCIAL_DATA.yearOpen['GILT10']},
+        { category: "bonds", name: "Germany Bund - 10Y", yield: dailyIndicators['BUND10'].close, change: dailyIndicators['BUND10'].dailyVariation, yearToDate: dailyIndicators['BUND10'].close - FINANCIAL_DATA.yearOpen['BUND10']},
+        { category: "bonds", name: "Japan Government Bond - 10Y", yield: dailyIndicators['JGB10'].close, change: dailyIndicators['JGB10'].dailyVariation, yearToDate: dailyIndicators['JGB10'].close - FINANCIAL_DATA.yearOpen['JGB10']},
     ]
 
     //Build Forex
