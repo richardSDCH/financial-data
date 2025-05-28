@@ -13,7 +13,7 @@ export default function Change({ value, percentage }) {
 
     let symbol, textColor, rotation;
     const positive = formattedValue >= threshold;
-    const negative = formattedValue < threshold * -1;
+    const negative = formattedValue <= threshold * -1;
     const neutral = !positive && !negative;
 
     if (positive) {

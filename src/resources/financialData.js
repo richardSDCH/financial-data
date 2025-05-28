@@ -57,46 +57,104 @@ export const FINANCIAL_DATA = {
     },
 
     //Bonds - https://www.cnbc.com/bonds/
-        T3M: 
+    "DGS3MO": [
         {
-            yearOpen: 4.500,
-            yield: 4.325,
-            change: -0.007,
+        "date": "2025-05-26",
+        "value": 4.345
         },
-    T2Y: 
         {
-            yearOpen: 4.500,
-            yield: 3.849,
-            change: -0.044,
-        },
-    T10Y: 
-        {
-            yearOpen: 4.500,
-            yield: 4.382,
-            change: 0.007,
-        },
-    T30Y: 
-        {
-            yearOpen: 4.500,
-            yield: 4.859,
-            change: 0.028,
-        },
-
-    //Commodities
-    //XAUUSD
-    XAUUSD:     
-        { 
-            yearOpen: 2623.81,
-            date: "14/05/2025",
-            prevClose: 3250.18,
-            currentValue: 3232.49
-        },
-    //WTICOUSD
-    WTI:                                                                  
-        { 
-            yearOpen: 72.050,
-            date: "14/05/2025",
-            prevClose: 63.742,
-            currentValue: 63.052
+        "date": "2025-05-27",
+        "value": 4.353
         }
+    ],
+    "DGS1": [
+        {
+        "date": "2025-05-26",
+        "value": 4.146
+        },
+        {
+        "date": "2025-05-27",
+        "value": 4.143
+        }
+    ],
+    "DGS2": [
+        {
+        "date": "2025-05-26",
+        "value": 3.993
+        },
+        {
+        "date": "2025-05-27",
+        "value": 3.983
+        }
+    ],
+    "DGS10": [
+        {
+        "date": "2025-05-26",
+        "value": 4.509
+        },
+        {
+        "date": "2025-05-27",
+        "value": 4.471
+        }
+    ],
+    "DGS30": [
+        {
+        "date": "2025-05-26",
+        "value": 5.031
+        },
+        {
+        "date": "2025-05-27",
+        "value": 4.978
+        }
+    ],
+    "GILT10": [
+        {
+        "date": "2025-05-26",
+        "value": 4.677
+        },
+        {
+        "date": "2025-05-27",
+        "value": 4.675
+        }
+    ],
+    "BUND10": [
+        {
+        "date": "2025-05-26",
+        "value": 2.559
+        },
+        {
+        "date": "2025-05-27",
+        "value": 2.539
+        }
+    ],
+    "JGB10": [
+        {
+        "date": "2025-05-26",
+        "value": 1.51
+        },
+        {
+        "date": "2025-05-27",
+        "value": 1.478
+        }
+    ],
+    "XAUUSD": [
+        {
+        "date": "2025-05-26",
+        "value": 3342.475
+        },
+        {
+        "date": "2025-05-27",
+        "value": 3292.15
+        }
+    ],
+    "WTICOUSD": [
+        {
+        "date": "2025-05-26",
+        "value": 61.932
+        },
+        {
+        "date": "2025-05-27",
+        "value": 61.796
+        }
+    ],
 }
