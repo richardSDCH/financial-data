@@ -76,36 +76,6 @@ app.get("/api/yahoo/:symbol", async (req, res) => {
   }
 });
 
-// // --------- FRED Route ---------
-// app.get("/api/fred/:seriesId", async (req, res) => {
-//   const { seriesId } = req.params;
-//   const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_API_KEY}&file_type=json&limit=1&sort_order=desc`;
-
-//   try {
-//     console.log("FRED URL:", url);
-//     const response = await fetch(url);
-//     if (!response.ok) throw new Error("FRED API error");
-
-//     const data = await response.json();
-//     const [latest] = data.observations;
-
-//     if (!latest || latest.value === ".") {
-//       return res.status(404).json({ error: "No valid FRED observation" });
-//     }
-
-//     const entry = {
-//       date: latest.date,
-//       value: parseFloat(latest.value),
-//     };
-
-//     saveToLocalJson(seriesId, entry);
-//     res.json(entry);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: "Failed to fetch FRED data" });
-//   }
-// });
-
 // --------- Start Server ---------
 app.listen(PORT, () => {
   console.log(`API Proxy server running at http://localhost:${PORT}`);

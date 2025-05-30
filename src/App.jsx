@@ -1,7 +1,7 @@
 import './App.css'
 import Table from "./components/Table";
 import { useEffect, useState } from "react";
-import { fetchLocalDailyData } from "./api/fetchApiData";
+import { fetchLocalApiDailyData, fetchManualDailyData } from "./api/fetchApiData";
 import { getDailyTableIndicators } from "./utils/utils";
 
 
@@ -12,15 +12,15 @@ export default function App() {
   
   useEffect(() => {
     async function fetchData() {
-      
       try {
-        const data = await fetchLocalDailyData();
-        setDailyData(data);
+        const apiData = await fetchLocalApiDailyData();   //Fetch Yahoo API data
+        const manualData = await fetchManualDailyData();  //Fetch manually added data
+        const fetchedData = { ...apiData, ...manualData };
+        setDailyData(fetchedData);
       } catch (err) {
-        console.error("Error fetching local daily data:", err);
+        console.error("Error fetching daily data:", err);
       }
     }
-
     fetchData();
   }, []);
   

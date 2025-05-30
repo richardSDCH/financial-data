@@ -25,3 +25,4 @@ dist-ssr
 
 # Daily data fetched from APIs
 dailyData.json
+manualDailyData.json
