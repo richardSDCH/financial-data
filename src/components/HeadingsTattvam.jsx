@@ -1,6 +1,6 @@
 
 
-export default function Headings({ category, title }) {
+export default function HeadingsTattvam({ category, title }) {
 
     const getHeading = (category, colNum) => {
         if (category === "indices" || category === "currencies" || category === "commodities") {
@@ -9,22 +9,22 @@ export default function Headings({ category, title }) {
 
         const formatters = {
             2: {
-                default: () => "Valor",
-                bonds: () => "Rendimiento",
-                M7: () => "Valor",
-                etfs: () => "Exposición"
+                default: () => "Value",
+                bonds: () => "Yield",
+                M7: () => "Value",
+                etfs: () => "Exposure"
             },
             3: {
-                default: () => "1 día",
-                bonds: () => "1 día",
-                M7: () => "1 día",
-                etfs: () => "Valor"
+                default: () => "1 day",
+                bonds: () => "1 day",
+                M7: () => "1 day",
+                etfs: () => "Value"
             },
             4: {
                 default: () => "YTD",
                 bonds: () => "YTD",
                 M7: () => "YTD",
-                etfs: () => "1 día"
+                etfs: () => "1 day"
             },
             5: {
                 etfs: () => "YTD"
@@ -45,7 +45,7 @@ export default function Headings({ category, title }) {
 
     return (
         <>
-            {defaultCategory && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
+            {defaultCategory && <div className="w-200 h-10 flex bg-[#811517] rounded-t-xl">
                 <div className="w-[3.5%]"></div>
                 <div className="w-[33%] flex items-center font-semibold">
                     <h4 className="font-semibold text-lg text-slate-50">{title}</h4>
@@ -61,15 +61,15 @@ export default function Headings({ category, title }) {
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {bonds && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
+            {bonds && <div className="w-200 h-10 flex bg-[#811517] rounded-t-xl">
                 <div className="w-[3.5%]"></div>
-                <div className="w-[36%] flex items-center font-semibold">
+                <div className="w-[33%] flex items-center font-semibold">
                     <h4 className="font-semibold text-lg text-slate-50">{title}</h4>
                 </div>
                 <div className="w-[20%] flex items-center font-semibold justify-end">                
                     <h4 className="font-semibold text-lg text-slate-50">{getHeading(category, 2)}</h4>
                 </div>
-                <div className="w-[17%] flex items-center font-semibold justify-end">                
+                <div className="w-[20%] flex items-center font-semibold justify-end">                
                     <h4 className="font-semibold text-lg text-slate-50 mr-6">{getHeading(category, 3)}</h4>
                 </div>
                 <div className="w-[20%] flex items-center justify-end">
@@ -77,7 +77,7 @@ export default function Headings({ category, title }) {
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {magnificent7 && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
+            {magnificent7 && <div className="w-200 h-10 flex bg-[#811517] rounded-t-xl">
                 <div className="w-[3.5%]"></div>
                 <div className="w-[33%] flex items-center font-semibold">
                     <h4 className="font-semibold text-lg text-slate-50 ml-1.5">{title}</h4>
@@ -93,7 +93,7 @@ export default function Headings({ category, title }) {
                 </div>
                 <div className="w-[3.5%]"></div>
             </div>}
-            {etfs && <div className="w-200 h-10 flex bg-blue-800 rounded-t-xl">
+            {etfs && <div className="w-200 h-10 flex bg-[#811517] rounded-t-xl">
                 <div className="w-[3.5%]"></div>
                 <div className="w-[18%] flex items-center font-semibold">
                     <h4 className="font-semibold text-lg text-slate-50">{title}</h4>

@@ -14,7 +14,7 @@ import JPY from "../resources/flags/JPY.png";
 import CHF from "../resources/flags/CHF.png";
 import CNH from "../resources/flags/CNH.png";
 
-export default function Row({ id, item, numRows }) {
+export default function RowTattvam({ id, item, numRows }) {
 
     const category = item.category;
 
@@ -34,7 +34,7 @@ export default function Row({ id, item, numRows }) {
     const symbol = category === "commodities" ? "$" : "";
 
     const even = id % 2 === 0;
-    const bgColor = even ? " bg-slate-100 " : " bg-slate-200 ";
+    const bgColor = even ? " bg-[#F2DFCE] " : " bg-[#FFF0E5] ";
     const bgIcon = even ? " bg-slate-200 " : " bg-slate-100";
     const lastRow = id === numRows - 1;
     const bottomRounded = lastRow ? "rounded-b-xl" : "";
@@ -96,9 +96,9 @@ export default function Row({ id, item, numRows }) {
 
     const getIcon = (id) => {
         const icons = {
-            0: NVDA,
-            1: MSFT,
-            2: AAPL,
+            0: MSFT,
+            1: AAPL,
+            2: NVDA,
             3: AMZN,
             4: GOOG,
             5: META,

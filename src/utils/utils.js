@@ -1,6 +1,6 @@
 import { FINANCIAL_DATA } from "../resources/financialData";
 
-export const getDailyTableIndicators = (dailyData) => {
+export const getDailyTableIndicators = (dailyData, user) => {
 
     const dailyIndicators = {};
 
@@ -43,21 +43,21 @@ export const getDailyTableIndicators = (dailyData) => {
         { category: "indices", name: "Dow Jones", value: dailyIndicators['^DJI'].close, percentage: dailyIndicators['^DJI'].dailyVariation, yearToDate: getYTD(dailyIndicators['^DJI'].close, FINANCIAL_DATA.yearOpen['^DJI'])},
         { category: "indices", name: "Russell 2000", value: dailyIndicators['^RUT'].close, percentage: dailyIndicators['^RUT'].dailyVariation, yearToDate: getYTD(dailyIndicators['^RUT'].close, FINANCIAL_DATA.yearOpen['^RUT'])},
         { category: "indices", name: "Stoxx 600", value: dailyIndicators['^STOXX'].close, percentage: dailyIndicators['^STOXX'].dailyVariation, yearToDate: getYTD(dailyIndicators['^STOXX'].close, FINANCIAL_DATA.yearOpen['^STOXX'])},
-        { category: "indices", name: "VIX - Volatilidad", value: dailyIndicators['^VIX'].close, percentage: dailyIndicators['^VIX'].dailyVariation, yearToDate: getYTD(dailyIndicators['^VIX'].close, FINANCIAL_DATA.yearOpen['^VIX'])},
+        { category: "indices", name: user === 'PI' ? "VIX - Volatilidad" : "VIX - Volatility", value: dailyIndicators['^VIX'].close, percentage: dailyIndicators['^VIX'].dailyVariation, yearToDate: getYTD(dailyIndicators['^VIX'].close, FINANCIAL_DATA.yearOpen['^VIX'])},
         { category: "indices", name: "US Dollar Index", value: dailyIndicators['DX-Y.NYB'].close, percentage: dailyIndicators['DX-Y.NYB'].dailyVariation, yearToDate: getYTD(dailyIndicators['DX-Y.NYB'].close, FINANCIAL_DATA.yearOpen['DX-Y.NYB'])},
         { category: "bonds", name: "US Treasury Note - 10Y", yield: dailyIndicators['DGS10'].close, change: dailyIndicators['DGS10'].dailyVariation, yearToDate: dailyIndicators['DGS10'].close - FINANCIAL_DATA.yearOpen['DGS10']},
-        { category: "commodities", name: "Oro", value: dailyIndicators['XAUUSD'].close, percentage: dailyIndicators['XAUUSD'].dailyVariation, yearToDate: getYTD(dailyIndicators['XAUUSD'].close, FINANCIAL_DATA.yearOpen['XAUUSD'])},
-        { category: "commodities", name: "Petróleo - West Texas", value: dailyIndicators['WTICOUSD'].close, percentage: dailyIndicators['WTICOUSD'].dailyVariation, yearToDate: getYTD(dailyIndicators['WTICOUSD'].close, FINANCIAL_DATA.yearOpen['WTICOUSD'])},
+        { category: "commodities", name: user === 'PI' ? "Oro" : "Gold", value: dailyIndicators['XAUUSD'].close, percentage: dailyIndicators['XAUUSD'].dailyVariation, yearToDate: getYTD(dailyIndicators['XAUUSD'].close, FINANCIAL_DATA.yearOpen['XAUUSD'])},
+        { category: "commodities", name: user === 'PI' ? "Petróleo - West Texas" : "Oil - West Texas", value: dailyIndicators['WTICOUSD'].close, percentage: dailyIndicators['WTICOUSD'].dailyVariation, yearToDate: getYTD(dailyIndicators['WTICOUSD'].close, FINANCIAL_DATA.yearOpen['WTICOUSD'])},
         { category: "commodities", name: "Bitcoin", value: dailyIndicators['BTC-USD'].close, percentage: dailyIndicators['BTC-USD'].dailyVariation, yearToDate: getYTD(dailyIndicators['BTC-USD'].close, FINANCIAL_DATA.yearOpen['BTC-USD'])}
     ]
 
     //Build Indices Europe
     const indicesEurope = [
-        { category: "indices", name: "FTSE 100 - Londres", value: dailyIndicators['^FTSE'].close, percentage: dailyIndicators['^FTSE'].dailyVariation, yearToDate: getYTD(dailyIndicators['^FTSE'].close, FINANCIAL_DATA.yearOpen['^FTSE'])},
+        { category: "indices", name: user === 'PI' ? "FTSE 100 - Londres" : "FTSE 100 - London", value: dailyIndicators['^FTSE'].close, percentage: dailyIndicators['^FTSE'].dailyVariation, yearToDate: getYTD(dailyIndicators['^FTSE'].close, FINANCIAL_DATA.yearOpen['^FTSE'])},
         { category: "indices", name: "DAX - Frankfurt", value: dailyIndicators['^GDAXI'].close, percentage: dailyIndicators['^GDAXI'].dailyVariation, yearToDate: getYTD(dailyIndicators['^GDAXI'].close, FINANCIAL_DATA.yearOpen['^GDAXI'])},
         { category: "indices", name: "CAC40 - Paris", value: dailyIndicators['^FCHI'].close, percentage: dailyIndicators['^FCHI'].dailyVariation, yearToDate: getYTD(dailyIndicators['^FCHI'].close, FINANCIAL_DATA.yearOpen['^FCHI'])},
         { category: "indices", name: "SMI - Zurich", value: dailyIndicators['^SSMI'].close, percentage: dailyIndicators['^SSMI'].dailyVariation, yearToDate: getYTD(dailyIndicators['^SSMI'].close, FINANCIAL_DATA.yearOpen['^SSMI'])},
-        { category: "indices", name: "FTSE MIB - Milán", value: dailyIndicators['FTSEMIB.MI'].close, percentage: dailyIndicators['FTSEMIB.MI'].dailyVariation, yearToDate: getYTD(dailyIndicators['FTSEMIB.MI'].close, FINANCIAL_DATA.yearOpen['FTSEMIB.MI'])},
+        { category: "indices", name: user === 'PI' ? "FTSE MIB - Milán" : "FTSE MIB - Milan", value: dailyIndicators['FTSEMIB.MI'].close, percentage: dailyIndicators['FTSEMIB.MI'].dailyVariation, yearToDate: getYTD(dailyIndicators['FTSEMIB.MI'].close, FINANCIAL_DATA.yearOpen['FTSEMIB.MI'])},
         { category: "indices", name: "IBEX 35 - Madrid", value: dailyIndicators['^IBEX'].close, percentage: dailyIndicators['^IBEX'].dailyVariation, yearToDate: getYTD(dailyIndicators['^IBEX'].close, FINANCIAL_DATA.yearOpen['^IBEX'])}
     ]
 
@@ -66,10 +66,10 @@ export const getDailyTableIndicators = (dailyData) => {
         { category: "indices", name: "Nikkei 225 - Tokyo", value: dailyIndicators['^N225'].close, percentage: dailyIndicators['^N225'].dailyVariation, yearToDate: getYTD(dailyIndicators['^N225'].close, FINANCIAL_DATA.yearOpen['^N225'])},
         { category: "indices", name: "Hang Seng - Hong Kong", value: dailyIndicators['^HSI'].close, percentage: dailyIndicators['^HSI'].dailyVariation, yearToDate: getYTD(dailyIndicators['^HSI'].close, FINANCIAL_DATA.yearOpen['^HSI'])},
         { category: "indices", name: "SSE Composite - Shanghai", value: dailyIndicators['000001.SS'].close, percentage: dailyIndicators['000001.SS'].dailyVariation, yearToDate: getYTD(dailyIndicators['000001.SS'].close, FINANCIAL_DATA.yearOpen['000001.SS'])},
-        { category: "indices", name: "KOSPI Composite - Seúl", value: dailyIndicators['^KS11'].close, percentage: dailyIndicators['^KS11'].dailyVariation, yearToDate: getYTD(dailyIndicators['^KS11'].close, FINANCIAL_DATA.yearOpen['^KS11'])},
+        { category: "indices", name: user === 'PI' ? "KOSPI Composite - Seúl" : "KOSPI Composite - Seoul", value: dailyIndicators['^KS11'].close, percentage: dailyIndicators['^KS11'].dailyVariation, yearToDate: getYTD(dailyIndicators['^KS11'].close, FINANCIAL_DATA.yearOpen['^KS11'])},
         { category: "indices", name: "ASX 200 - Australia", value: dailyIndicators['^AXJO'].close, percentage: dailyIndicators['^AXJO'].dailyVariation, yearToDate: getYTD(dailyIndicators['^AXJO'].close, FINANCIAL_DATA.yearOpen['^AXJO'])},
-        { category: "indices", name: "NZX 50 - Nueva Zelanda", value: dailyIndicators['^NZ50'].close, percentage: dailyIndicators['^NZ50'].dailyVariation, yearToDate: getYTD(dailyIndicators['^NZ50'].close, FINANCIAL_DATA.yearOpen['^NZ50'])},
-        { category: "indices", name: "BSE Sensex - Bombay", value: dailyIndicators['^BSESN'].close, percentage: dailyIndicators['^BSESN'].dailyVariation, yearToDate: getYTD(dailyIndicators['^BSESN'].close, FINANCIAL_DATA.yearOpen['^BSESN'])}
+        { category: "indices", name: user === 'PI' ? "NZX 50 - Nueva Zelanda" : "NZX 50 - New Zealand", value: dailyIndicators['^NZ50'].close, percentage: dailyIndicators['^NZ50'].dailyVariation, yearToDate: getYTD(dailyIndicators['^NZ50'].close, FINANCIAL_DATA.yearOpen['^NZ50'])},
+        { category: "indices", name: user === 'PI' ? "BSE Sensex - Bombay" : "BSE Sensex - Mumbai", value: dailyIndicators['^BSESN'].close, percentage: dailyIndicators['^BSESN'].dailyVariation, yearToDate: getYTD(dailyIndicators['^BSESN'].close, FINANCIAL_DATA.yearOpen['^BSESN'])}
     ]
 
     //Build Bonds
@@ -95,9 +95,9 @@ export const getDailyTableIndicators = (dailyData) => {
 
     //Build Magnificent 7+
     const magnificent7 = [
+        { category: "M7", name: "Nvdia", symbol: "NVDA", value: dailyIndicators['NVDA'].close, percentage: dailyIndicators['NVDA'].dailyVariation, yearToDate: getYTD(dailyIndicators['NVDA'].close, FINANCIAL_DATA.yearOpen['NVDA'])},
         { category: "M7", name: "Microsoft", symbol: "MSFT", value: dailyIndicators['MSFT'].close, percentage: dailyIndicators['MSFT'].dailyVariation, yearToDate: getYTD(dailyIndicators['MSFT'].close, FINANCIAL_DATA.yearOpen['MSFT'])},
         { category: "M7", name: "Apple", symbol: "AAPL", value: dailyIndicators['AAPL'].close, percentage: dailyIndicators['AAPL'].dailyVariation, yearToDate: getYTD(dailyIndicators['AAPL'].close, FINANCIAL_DATA.yearOpen['AAPL'])},
-        { category: "M7", name: "Nvdia", symbol: "NVDA", value: dailyIndicators['NVDA'].close, percentage: dailyIndicators['NVDA'].dailyVariation, yearToDate: getYTD(dailyIndicators['NVDA'].close, FINANCIAL_DATA.yearOpen['NVDA'])},
         { category: "M7", name: "Amazon", symbol: "AMZN", value: dailyIndicators['AMZN'].close, percentage: dailyIndicators['AMZN'].dailyVariation, yearToDate: getYTD(dailyIndicators['AMZN'].close, FINANCIAL_DATA.yearOpen['AMZN'])},
         { category: "M7", name: "Alphabet", symbol: "GOOG", value: dailyIndicators['GOOG'].close, percentage: dailyIndicators['GOOG'].dailyVariation, yearToDate: getYTD(dailyIndicators['GOOG'].close, FINANCIAL_DATA.yearOpen['GOOG'])},
         { category: "M7", name: "Meta", symbol: "META", value: dailyIndicators['META'].close, percentage: dailyIndicators['META'].dailyVariation, yearToDate: getYTD(dailyIndicators['META'].close, FINANCIAL_DATA.yearOpen['META'])},
@@ -115,7 +115,7 @@ export const getDailyTableIndicators = (dailyData) => {
         { category: "etfs", name: "VEU", exposure: "Total world ex-USA", value: dailyIndicators['VEU'].close, percentage: dailyIndicators['VEU'].dailyVariation, yearToDate: getYTD(dailyIndicators['VEU'].close, FINANCIAL_DATA.yearOpen['VEU'])},
         { category: "etfs", name: "IBIT", exposure: "Bitcoin", value: dailyIndicators['IBIT'].close, percentage: dailyIndicators['IBIT'].dailyVariation, yearToDate: getYTD(dailyIndicators['IBIT'].close, FINANCIAL_DATA.yearOpen['IBIT'])},
         { category: "etfs", name: "BND", exposure: "Total US bond market", value: dailyIndicators['BND'].close, percentage: dailyIndicators['BND'].dailyVariation, yearToDate: getYTD(dailyIndicators['BND'].close, FINANCIAL_DATA.yearOpen['BND'])},
-        { category: "etfs", name: "GLD", exposure: "Oro", value: dailyIndicators['GLD'].close, percentage: dailyIndicators['GLD'].dailyVariation, yearToDate: getYTD(dailyIndicators['GLD'].close, FINANCIAL_DATA.yearOpen['GLD'])}
+        { category: "etfs", name: "GLD", exposure: user === 'PI' ? "Oro" : "Gold", value: dailyIndicators['GLD'].close, percentage: dailyIndicators['GLD'].dailyVariation, yearToDate: getYTD(dailyIndicators['GLD'].close, FINANCIAL_DATA.yearOpen['GLD'])}
     ]
 
     //Creating data object
