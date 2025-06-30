@@ -21,6 +21,7 @@ const symbols = [
     '^AXJO',        //ASX 200
     '^NZ50',        //NZX 50
     '^BSESN',       //BSE Sensex
+    '^TASI.SR',     //Tadawul Saudi Arabia
     '^VIX',         //CBOE Volatility
     'DX-Y.NYB',     //US Dollar Index
     'EURUSD=X',     //EUR/USD

@@ -69,7 +69,8 @@ export const getDailyTableIndicators = (dailyData, user) => {
         { category: "indices", name: user === 'PI' ? "KOSPI Composite - Seúl" : "KOSPI Composite - Seoul", value: dailyIndicators['^KS11'].close, percentage: dailyIndicators['^KS11'].dailyVariation, yearToDate: getYTD(dailyIndicators['^KS11'].close, FINANCIAL_DATA.yearOpen['^KS11'])},
         { category: "indices", name: "ASX 200 - Australia", value: dailyIndicators['^AXJO'].close, percentage: dailyIndicators['^AXJO'].dailyVariation, yearToDate: getYTD(dailyIndicators['^AXJO'].close, FINANCIAL_DATA.yearOpen['^AXJO'])},
         { category: "indices", name: user === 'PI' ? "NZX 50 - Nueva Zelanda" : "NZX 50 - New Zealand", value: dailyIndicators['^NZ50'].close, percentage: dailyIndicators['^NZ50'].dailyVariation, yearToDate: getYTD(dailyIndicators['^NZ50'].close, FINANCIAL_DATA.yearOpen['^NZ50'])},
-        { category: "indices", name: user === 'PI' ? "BSE Sensex - Bombay" : "BSE Sensex - Mumbai", value: dailyIndicators['^BSESN'].close, percentage: dailyIndicators['^BSESN'].dailyVariation, yearToDate: getYTD(dailyIndicators['^BSESN'].close, FINANCIAL_DATA.yearOpen['^BSESN'])}
+        { category: "indices", name: user === 'PI' ? "BSE Sensex - Bombay" : "BSE Sensex - Mumbai", value: dailyIndicators['^BSESN'].close, percentage: dailyIndicators['^BSESN'].dailyVariation, yearToDate: getYTD(dailyIndicators['^BSESN'].close, FINANCIAL_DATA.yearOpen['^BSESN'])},
+        { category: "indices", name: "Tadawul - Arabia Saudita", value: dailyIndicators['^TASI.SR'].close, percentage: dailyIndicators['^TASI.SR'].dailyVariation, yearToDate: getYTD(dailyIndicators['^TASI.SR'].close, FINANCIAL_DATA.yearOpen['^TASI.SR'])}
     ]
 
     //Build Bonds

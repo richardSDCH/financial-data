@@ -19,6 +19,7 @@ export const FINANCIAL_DATA = {
         '^AXJO': 8159.1,               //ASX 200
         '^NZ50': 13180.82,             //NZX 50
         '^BSESN': 78162.80,            //BSE Sensex
+        '^TASI.SR': 12087.94,          //Tadawul Saudi Arabia
         '^VIX': 17.21,                 //CBOE Volatility
         'DX-Y.NYB': 108.526,           //US Dollar Index
         'EURUSD=X': 1.03549,           //EUR/USD
